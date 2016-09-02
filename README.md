@@ -16,3 +16,12 @@ Fix invalid units:
 ```
 docker run -it -v /var/run/fleet.sock:/var/run/fleet.sock pulcy/tranquility:latest fix
 ```
+
+## J2 configuration
+
+A sample configuration for [J2](https://github.com/pulcy/j2) can be found in [config](./config).
+
+To use it, run:
+```
+j2 run -j config/tranquility.hcl -c <yourcluster>
+```
