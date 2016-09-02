@@ -61,6 +61,7 @@ func init() {
 }
 
 func main() {
+	cmdMain.AddCommand(checkCmd)
 	cmdMain.AddCommand(fixCmd)
 
 	cmdMain.Execute()

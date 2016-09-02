@@ -42,6 +42,12 @@ func (s *Service) Run() error {
 		// No invalud units found
 		return nil
 	}
+	if s.DryRun {
+		for name := range initialInvalidUnits {
+			s.Logger.Infof("Found invalid unit: %s", name)
+		}
+		return nil
+	}
 
 	s.Logger.Infof("Found %d invalid units, wait a bit for stability", len(initialInvalidUnits))
 	time.Sleep(time.Second * 30)
