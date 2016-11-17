@@ -75,7 +75,7 @@ func (s *Service) Run() error {
 			for unitState := range invalidUnitsChan {
 				_, stable := initialInvalidUnits[unitState.Name]
 				if stable {
-					s.Logger.Infof("Found invalid unit: %s", unitState.String())
+					s.Logger.Infof("Found invalid unit '%s' on '%s'", unitState.String(), unitState.MachineID)
 					if fix {
 						if err := s.tryFixUnit(unitState); err != nil {
 							s.Logger.Errorf("Failed to fix unit %s", unitState.Name)

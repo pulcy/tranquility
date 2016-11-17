@@ -17,7 +17,7 @@ REPOPATH := $(ORGPATH)/$(REPONAME)
 BIN := $(BINDIR)/$(PROJECT)
 
 GOPATH := $(GOBUILDDIR)
-GOVERSION := 1.7.0-alpine
+GOVERSION := 1.7.3-alpine
 
 ifndef GOOS
 	GOOS := linux

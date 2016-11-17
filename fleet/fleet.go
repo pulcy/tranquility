@@ -40,10 +40,11 @@ type Fleet struct {
 }
 
 type FleetUnitState struct {
-	Name     string
-	Failed   bool
-	Inactive bool
-	Global   bool
+	Name      string
+	Failed    bool
+	Inactive  bool
+	Global    bool
+	MachineID string
 }
 
 func (s FleetUnitState) String() string {
@@ -175,13 +176,13 @@ func (f *Fleet) InvalidUnits(ch chan<- FleetUnitState) error {
 			if err == nil && rc {
 				global, err := f.unitIsGlobal(s.Name)
 				if err == nil {
-					ch <- FleetUnitState{Name: s.Name, Inactive: true, Global: global}
+					ch <- FleetUnitState{Name: s.Name, Inactive: true, Global: global, MachineID: s.MachineID}
 				}
 			}
 		case "failed":
 			global, err := f.unitIsGlobal(s.Name)
 			if err == nil {
-				ch <- FleetUnitState{Name: s.Name, Failed: true, Global: global}
+				ch <- FleetUnitState{Name: s.Name, Failed: true, Global: global, MachineID: s.MachineID}
 			}
 		}
 	}
